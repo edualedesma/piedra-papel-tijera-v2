@@ -8,18 +8,23 @@ class RockPaperScissors
 		@@throws
 	end
 	
+	def throws_sample
+		@@throws.sample
+	end
+	
 	@@defeat = { rock: :scissors, paper: :rock, scissors: :paper}
 	@@throws = @@defeat.keys
 
 	class << self #Todos los métodos son de clase.
 
-	def play()
+	def play(jugada)
 		#puts "Choose one of #{throws.join(', ')}: "
-		player_throw = gets.chomp.to_sym
+		#player_throw = gets.chomp.to_sym
+		player_throw = jugada
 
-		raise ScriptError, "You must execute: ''#{$0}'' followed by one of the following '#{throws.join(', ')}'" unless throws.include? player_throw
+		#raise ScriptError, "You must execute: ''#{$0}'' followed by one of the following '#{throws.join(', ')}'" unless throws.include? player_throw
 
-		computer_throw = throws.sample
+		computer_throw = throws_sample
 
 		answer =  case player_throw
 		when computer_throw 
